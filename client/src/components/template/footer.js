@@ -47,7 +47,7 @@ class FooterTemplate extends Component {
                   {this.renderLinks()}
                 </ul>
               </nav>
-              <p className="copyright">© {year}, Your Site. All Rights Reserved.</p>
+              <p className="copyright">© {year}, Palisthetics. All Rights Reserved.</p>
             </div>
           </div>
         </div>
