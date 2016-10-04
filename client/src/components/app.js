@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import HeaderTemplate from './template/header';
-import FooterTemplate from './template/footer';
+
+
+var containerFluid ={
+    paddingLeft: 0,
+    paddingRight: 0
+}
+ 
 
 class App extends Component {
   render() {
     return (
       <div>
-      <HeaderTemplate logo="Palisthetics" />
+      
 
-      <div className="container">
+      <div className="container-fluid" style={containerFluid}>
         {this.props.children}
       </div>
 
-      <FooterTemplate />
+      
       </div>
     );
   }

@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import cookie from 'react-cookie';
 import { protectedTest } from '../../actions/auth';
+import HeaderTemplate from '../template/header';
+import FooterTemplate from '../template/footer';
 
 class Dashboard extends Component {
 
@@ -49,11 +51,13 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+      <HeaderTemplate logo="Palisthetics" />
         <Link to="/dashboard/inbox">Inbox</Link> | <Link to="/profile/edit">Edit Profile</Link> | <Link to="/billing/settings">Billing</Link>
         {this.isRole("Admin", this.adminMenu())}
         {this.isRole("Owner", this.ownerMenu())}
         {this.isRole("Client", this.clientMenu())}
         <p>{this.props.content}</p>
+        <FooterTemplate />
       </div>
     );
   }
