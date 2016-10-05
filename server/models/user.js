@@ -2,7 +2,7 @@
 const mongoose = require('mongoose'),
       Schema = mongoose.Schema,
       bcrypt = require('bcrypt-nodejs'),
-      matches = require('./matches.js');
+      matches = require('./match.js');
 
 //================================
 // User Schema
