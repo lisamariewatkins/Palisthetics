@@ -28,10 +28,10 @@ class HeaderTemplate extends Component {
           <Link to="/" className="blue">Home</Link>
         </li>,
         <li key={2 + "header"}>
-          <Link to="dashboard">Dashboard</Link>
+          <Link to="dashboard" className="blue">Dashboard</Link>
         </li>,
         <li key={3 + "header"}>
-          <Link to="logout">Logout</Link>
+          <Link to="logout" className="blue">Logout</Link>
         </li>
       ]
     } else {

@@ -27,11 +27,13 @@ class Inbox extends Component {
     return (
       <div>
         <HeaderTemplate logo="Palisthetics" />
+         <div className="col-md-6">
         <Link className="btn btn-primary" to="/dashboard/conversation/new">Compose Message</Link>
         <div className="panel panel-default">
           <div className="panel-body">
             {this.renderInbox()}
           </div>
+        </div>
         </div>
       </div>
     );
