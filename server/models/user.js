@@ -1,7 +1,8 @@
 // Importing Node packages required for schema
 const mongoose = require('mongoose'),
       Schema = mongoose.Schema,
-      bcrypt = require('bcrypt-nodejs');
+      bcrypt = require('bcrypt-nodejs'),
+      matches = require('./matches.js');
 
 //================================
 // User Schema
@@ -26,6 +27,10 @@ const UserSchema = new Schema({
     enum: ['Member', 'Client', 'Owner', 'Admin'],
     default: 'Member'
   },
+  matches: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Match'
+  }],
   stripe: {
     customerId: { type: String },
     subscriptionId: { type: String },
