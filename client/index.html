@@ -94,6 +94,10 @@
             border-top-right-radius: 50px;
             border-bottom-right-radius: 50px;
         }
+        
+        .matches {
+            display: none;
+        }
     </style>
 </head>
 
@@ -109,5 +113,16 @@
 
 <!-- Import bundled JavaScript -->
 <script src="/bundle.js"></script>
+
+<script>
+    $("#matchView").click(function() {
+        $('.matches').css("display", "block")
+        $('#profile').css("display", "none")
+    });
+    $("#viewProfile").click(function() {
+        $('#profile').css("display", "block")
+        $('.matches').css("display", "none")
+    })
+</script>
 
 </html>

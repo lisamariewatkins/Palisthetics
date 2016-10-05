@@ -6,10 +6,18 @@ import { protectedTest } from '../../actions/auth';
 import HeaderTemplate from '../template/header';
 import FooterTemplate from '../template/footer';
 
+var matchesStyle = {
+  width: 150,
+  height: 150,
+  borderRadius: '50%',
+};
+var matchChoices = {
+ marginTop: 30
+};
 
-var names = ['Jake', 'Jon', 'Thruster'];
-var namesList = names.map(function(name){
-                        return <li>{name}</li>;
+var imgs = ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150'];
+var namesList = imgs.map(function(imgs){
+                        return <div className="col-md-3" style={matchChoices}><img style={matchesStyle} src={imgs} /></div>;
                       });
 
 
@@ -87,8 +95,7 @@ class Dashboard extends Component {
       </div>
     );
   }
-
-  clientMenu() {
+clientMenu() {
     return (
       <div className="client-menu">
         Client menu coming soon.
@@ -105,23 +112,34 @@ class Dashboard extends Component {
         {this.isRole("Owner", this.ownerMenu())}
         {this.isRole("Client", this.clientMenu())}
         <p>{this.props.content}</p>
+        <div id="profile">
         <div className="text-center">
 			<h2>Name</h2>
 			<p>Gender, Age</p>
+      <a href="#" id="matchView">Matches</a>
 			</div>
 			<div className="container" style={flex}>
 				<Link to="/dashboard/inbox"><img src="/../../images/message.png" style={crclBlue} className="center-block text-center" /></Link>
 				<a style={crclRed} className="center-block text-center">X</a>
 					<img src="http://placehold.it/300x300" className="center-block img-circle img-responsive" style={crclImg} />
-				
+			
 
 			</div>
+      <div className="row">
       <div className="col-md-6 col-md-offset-3" style={decision}>
         <p>Favorite Activities:</p>
         <p>Area of Town:</p>
         <p>Preferred Days/Times:</p>
         </div>
-        <ul>{ namesList }</ul>
+        </div>
+        	</div>
+       <div className="row">
+       <div className="col-md-8 col-md-offset-2 text-center matches"> 
+       <h2>Matches</h2>
+       <div className="text-center"><a href="#" id="viewProfile">Profile</a></div>
+      { namesList }
+       </div>
+       </div>
       </div>
     );
   }
