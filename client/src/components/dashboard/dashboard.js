@@ -19,6 +19,9 @@ var crclBlue = {
 	zIndex: 1000,
 	fontSize: 30
 };
+var decision = {
+  marginTop: 50
+};
 
 var crclRed = {
     backgroundColor: '#F57777',
@@ -106,7 +109,11 @@ class Dashboard extends Component {
 				
 
 			</div>
-        <FooterTemplate />
+      <div className="col-md-6 col-md-offset-3" style={decision}>
+        <p>Favorite Activities:</p>
+        <p>Area of Town:</p>
+        <p>Preferred Days/Times:</p>
+        </div>
       </div>
     );
   }

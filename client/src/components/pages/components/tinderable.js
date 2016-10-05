@@ -1,4 +1,9 @@
 /*global require,module,setTimeout*/
+const sideBool = {
+    left: false,
+    right: true
+    };
+
 var React = require('react'),
     ReactDOM = require('react-dom'),
     addons = require('react-addons'),
@@ -226,11 +231,14 @@ var Tinderable = React.createClass({
     removeCard: function(side, cardId) {
         setTimeout(function() {
             if (side === 'left') {
-                this.setState({ alertLeft: false });
+                this.setState({ alertLeft: true });
             } else if (side === 'right') {
                 this.setState({ alertRight: false });
             }
         }.bind(this), 3000);
+
+$.post( "match", { swipeDecision: sideBool[side], userId: cardId } );
+
 
         this.setState({
             cards: this.state.cards.filter(function(c) {
