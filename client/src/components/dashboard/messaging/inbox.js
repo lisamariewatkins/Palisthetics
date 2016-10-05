@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import { fetchConversations } from '../../../actions/messaging';
 
 import ConversationList from './conversation-list';
+import HeaderTemplate from '../../template/header';
+import FooterTemplate from '../../template/footer';
 
 class Inbox extends Component {
   componentWillMount() {
@@ -24,11 +26,14 @@ class Inbox extends Component {
   render() {
     return (
       <div>
+        <HeaderTemplate logo="Palisthetics" />
+         <div className="col-md-6">
         <Link className="btn btn-primary" to="/dashboard/conversation/new">Compose Message</Link>
         <div className="panel panel-default">
           <div className="panel-body">
             {this.renderInbox()}
           </div>
+        </div>
         </div>
       </div>
     );

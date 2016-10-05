@@ -2,25 +2,43 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+
+var containerFluid ={
+    paddingLeft: 0,
+    paddingRight: 0
+}
+
+var navLogo = {
+    fontFamily: 'Exo',
+    fontWeight: 600,
+    fontSize: 40,
+    color: '#F98100'
+    }
+
+var navbar ={
+    backgroundColor: '#F1FFE2'
+}
+    
+
 class HeaderTemplate extends Component {
   renderLinks() {
     if (this.props.authenticated) {
       return [
-        <li key={1 + "header"}>
-          <Link to="/">Home</Link>
+        <li key={1 + "header"} >
+          <Link to="/" className="blue">Home</Link>
         </li>,
         <li key={2 + "header"}>
-          <Link to="dashboard">Dashboard</Link>
+          <Link to="dashboard" className="blue">Dashboard</Link>
         </li>,
         <li key={3 + "header"}>
-          <Link to="logout">Logout</Link>
+          <Link to="logout" className="blue">Logout</Link>
         </li>
       ]
     } else {
       return [
         // Unauthenticated navigation
         <li key={1}>
-          <Link to="/">Home</Link>
+          <Link to="/" className="blue">Home</Link>
         </li>,
         <li key={2}>
           <Link to="login">Login</Link>
@@ -35,16 +53,16 @@ class HeaderTemplate extends Component {
   render() {
 
     return (
-      <div>
-        <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
+        <nav className="navbar navbar-default" style={navbar}>
+        <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+     <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to="/">{this.props.logo}</Link>
+            <Link className="navbar-brand" style={navLogo} to="/">{this.props.logo}</Link>
           </div>
 
           <div className="collapse navbar-collapse" id="nav-collapse">
@@ -54,7 +72,6 @@ class HeaderTemplate extends Component {
           </div>
         </div>
         </nav>
-      </div>
     );
   }
 }

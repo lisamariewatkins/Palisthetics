@@ -4,6 +4,19 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { loginUser } from '../../actions/auth';
 
+var signinBrand = {
+fontFamily: 'Exo',
+    fontWeight: 600,
+    color: '#F98100',
+    fontSize: 40,
+    textAlign: 'center'
+};
+
+var input = {
+backgroundColor: '#F1FFE2',
+marginBottom: 5
+};
+
 const form = reduxForm({
   form: 'login'
 });
@@ -27,21 +40,27 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="form-signin col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+        <h2 style={signinBrand}>Palisthenics</h2>
         {this.renderAlert()}
           <div>
-            <label>Email</label>
-            <Field name="email" className="form-control" component="input" type="text" />
+    <label for="inputEmail" className="sr-only">Email address</label>
+            <Field name="email" className="form-control" component="input" type="text" style={input} />
           </div>
           <div>
-            <label>Password</label>
-            <Field name="password" className="form-control" component="input" type="password" />
+           <label for="inputPassword" className="sr-only">Password</label>
+            <Field name="password" className="form-control col-md-12" component="input" type="password" style={input} />
           </div>
-          <button type="submit" className="btn btn-primary">Login</button>
+          <div className="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" /> Remember me
+                    </label>
+                    </div>
+          <button type="submit" className="btn btn-lg btn-primary btn-block">Login</button>
+        <Link to="/forgot-password">Forgot Password? </Link>
+        <Link to="/register"> Sign up?</Link>
         </form>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </div>
+        
     );
   }
 }

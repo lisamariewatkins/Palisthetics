@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { fetchRecipients, startConversation } from '../../../actions/messaging';
+import HeaderTemplate from '../../template/header';
+import FooterTemplate from '../../template/footer';
 
 const form = reduxForm({
   form: 'composeMessage',
@@ -65,7 +67,9 @@ class ComposeMessage extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <div>
+         <HeaderTemplate logo="Palisthetics" />
+      <form className="col-md-6" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
       <h2>Start New Conversation</h2>
         <Field className="form-control" name="recipient" component="select">
           <option></option>
@@ -77,6 +81,7 @@ class ComposeMessage extends Component {
         <Field name="composedMessage" component={renderField} type="text" placeholder="Type here to chat..." />
         <button action="submit" className="btn btn-primary">Send</button>
       </form>
+      </div>
     );
   }
 }
