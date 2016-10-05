@@ -5,7 +5,9 @@ const AuthenticationController = require('./controllers/authentication'),
       StripeController = require('./controllers/stripe'),
       express = require('express'),
       passportService = require('./config/passport'),
-      passport = require('passport');
+      passport = require('passport'),
+      Match = require('./models/match.js'),
+      User = require('./models/user.js');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -58,6 +60,27 @@ module.exports = function(app) {
   apiRoutes.get('/protected', requireAuth, function(req, res) {
     res.send({ content: 'The protected test route is functional!'});
   });
+
+  apiRoutes.post('/match', requireAuth, function(req,res){
+      var match = new Match(req.body);
+
+      match.save(function(err,doc){
+        if(err){
+          console.log("ERROR SAVING: ",err);
+        } 
+        else {
+          User.findOneAndUpdate({'_id': req.user._id}, {$push: {'matches': doc._id}})
+          // execute the above query
+          .exec(function(err, doc){
+            // log any errors
+            if (err){
+              console.log(err);
+            } else {
+            res.send(200);
+          });
+        }
+      });
+    });
 
   //=========================
   // Chat Routes
