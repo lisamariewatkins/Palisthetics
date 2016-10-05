@@ -28,6 +28,7 @@ module.exports = function(app) {
         payRoutes = express.Router(),
         communicationRoutes = express.Router();
 
+
   //=========================
   // Auth Routes
   //=========================
@@ -76,11 +77,12 @@ module.exports = function(app) {
             if (err){
               console.log(err);
             } else {
-            res.send(200);
+              res.send(200);
+            };
           });
-        }
+        };
       });
-    });
+  });
 
   //=========================
   // Chat Routes

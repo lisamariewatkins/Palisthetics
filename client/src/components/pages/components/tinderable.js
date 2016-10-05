@@ -1,3 +1,6 @@
+import axios from 'axios';
+import cookie from 'react-cookie';
+
 /*global require,module,setTimeout*/
 const sideBool = {
     left: false,
@@ -237,7 +240,9 @@ var Tinderable = React.createClass({
             }
         }.bind(this), 3000);
 
-$.post( "match", { swipeDecision: sideBool[side], userId: cardId } );
+axios.post( "http://localhost:3000/api/match", { swipeDecision: sideBool[side], userId: cardId }, {
+      headers: { 'Authorization': cookie.load('token')}
+    });
 
 
         this.setState({
