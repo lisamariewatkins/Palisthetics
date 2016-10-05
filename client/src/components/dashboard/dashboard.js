@@ -6,6 +6,13 @@ import { protectedTest } from '../../actions/auth';
 import HeaderTemplate from '../template/header';
 import FooterTemplate from '../template/footer';
 
+
+var names = ['Jake', 'Jon', 'Thruster'];
+var namesList = names.map(function(name){
+                        return <li>{name}</li>;
+                      });
+
+
 var crclBlue = {
     backgroundColor: '#9BF0F2',
 	height: 50,
@@ -114,6 +121,7 @@ class Dashboard extends Component {
         <p>Area of Town:</p>
         <p>Preferred Days/Times:</p>
         </div>
+        <ul>{ namesList }</ul>
       </div>
     );
   }
